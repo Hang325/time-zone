@@ -505,7 +505,14 @@ function convertTime() {
 }
 
 // 頁面載入時初始化
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
     setDefaultTime();
     initMap();
-};
+    
+    // 監聽視窗大小改變事件
+    window.addEventListener('resize', function() {
+        if (map) {
+            map.invalidateSize();
+        }
+    });
+});

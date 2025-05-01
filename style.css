@@ -305,7 +305,7 @@ button:hover {
 }
 
 /* 響應式設計 */
-@media (max-width: 768px) {
+@media (orientation: portrait), (max-width: 768px) {
     .app-container {
         flex-direction: column;
     }
@@ -313,11 +313,31 @@ button:hover {
     .map-section {
         position: relative;
         width: 100%;
-        height: 400px;
+        height: 50vh;  /* 在直式時佔據一半的視窗高度 */
+        min-height: 300px;  /* 確保地圖最小高度 */
     }
 
     .content-section {
         margin-left: 0;
         width: 100%;
+        min-height: 50vh;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 769px) {
+    .app-container {
+        flex-direction: row;
+    }
+
+    .map-section {
+        position: fixed;
+        width: 50%;
+        height: 100vh;
+    }
+
+    .content-section {
+        margin-left: 50%;
+        width: 50%;
+        min-height: 100vh;
     }
 }
