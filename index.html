@@ -11,45 +11,58 @@
 </head>
 <body>
     <div class="container">
-        <h1>時區轉換器</h1>
+        <div class="language-selector">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="zh-TW">繁體中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="ru">Русский</option>
+                <option value="th">ไทย</option>
+            </select>
+        </div>
+        <h1 data-i18n="title">時區轉換器</h1>
         <div id="map"></div>
         <div class="converter">
             <div class="input-group">
-                <label for="sourceTime">輸入時間：</label>
+                <label for="sourceTime" data-i18n="inputTime">輸入時間：</label>
                 <input type="datetime-local" id="sourceTime">
                 <select id="sourceZone">
-                    <optgroup label="亞洲">
-                        <option value="Asia/Taipei">臺北 (GMT+8)</option>
-                        <option value="Asia/Tokyo">東京 (GMT+9)</option>
-                        <option value="Asia/Seoul">首爾 (GMT+9)</option>
-                        <option value="Asia/Shanghai">上海 (GMT+8)</option>
-                        <option value="Asia/Hong_Kong">香港 (GMT+8)</option>
-                        <option value="Asia/Singapore">新加坡 (GMT+8)</option>
-                        <option value="Asia/Bangkok">曼谷 (GMT+7)</option>
-                        <option value="Asia/Dubai">杜拜 (GMT+4)</option>
+                    <optgroup label="亞洲" data-i18n="asia">
+                        <option value="Asia/Taipei" data-i18n="taipei">臺北 (GMT+8)</option>
+                        <option value="Asia/Tokyo" data-i18n="tokyo">東京 (GMT+9)</option>
+                        <option value="Asia/Seoul" data-i18n="seoul">首爾 (GMT+9)</option>
+                        <option value="Asia/Shanghai" data-i18n="shanghai">上海 (GMT+8)</option>
+                        <option value="Asia/Hong_Kong" data-i18n="hongkong">香港 (GMT+8)</option>
+                        <option value="Asia/Singapore" data-i18n="singapore">新加坡 (GMT+8)</option>
+                        <option value="Asia/Bangkok" data-i18n="bangkok">曼谷 (GMT+7)</option>
+                        <option value="Asia/Dubai" data-i18n="dubai">杜拜 (GMT+4)</option>
                     </optgroup>
-                    <optgroup label="歐洲">
-                        <option value="Europe/London">倫敦 (GMT+1)</option>
-                        <option value="Europe/Paris">巴黎 (GMT+2)</option>
-                        <option value="Europe/Berlin">柏林 (GMT+2)</option>
-                        <option value="Europe/Rome">羅馬 (GMT+2)</option>
-                        <option value="Europe/Moscow">莫斯科 (GMT+3)</option>
+                    <optgroup label="歐洲" data-i18n="europe">
+                        <option value="Europe/London" data-i18n="london">倫敦 (GMT+1)</option>
+                        <option value="Europe/Paris" data-i18n="paris">巴黎 (GMT+2)</option>
+                        <option value="Europe/Berlin" data-i18n="berlin">柏林 (GMT+2)</option>
+                        <option value="Europe/Rome" data-i18n="rome">羅馬 (GMT+2)</option>
+                        <option value="Europe/Moscow" data-i18n="moscow">莫斯科 (GMT+3)</option>
                     </optgroup>
-                    <optgroup label="美洲">
-                        <option value="America/New_York">紐約 (GMT-4)</option>
-                        <option value="America/Los_Angeles">洛杉磯 (GMT-7)</option>
-                        <option value="America/Chicago">芝加哥 (GMT-5)</option>
-                        <option value="America/Vancouver">溫哥華 (GMT-7)</option>
-                        <option value="America/Toronto">多倫多 (GMT-4)</option>
+                    <optgroup label="美洲" data-i18n="america">
+                        <option value="America/New_York" data-i18n="newyork">紐約 (GMT-4)</option>
+                        <option value="America/Los_Angeles" data-i18n="losangeles">洛杉磯 (GMT-7)</option>
+                        <option value="America/Chicago" data-i18n="chicago">芝加哥 (GMT-5)</option>
+                        <option value="America/Vancouver" data-i18n="vancouver">溫哥華 (GMT-7)</option>
+                        <option value="America/Toronto" data-i18n="toronto">多倫多 (GMT-4)</option>
                     </optgroup>
-                    <optgroup label="大洋洲">
-                        <option value="Australia/Sydney">雪梨 (GMT+10)</option>
-                        <option value="Australia/Melbourne">墨爾本 (GMT+10)</option>
-                        <option value="Pacific/Auckland">奧克蘭 (GMT+12)</option>
+                    <optgroup label="大洋洲" data-i18n="oceania">
+                        <option value="Australia/Sydney" data-i18n="sydney">雪梨 (GMT+10)</option>
+                        <option value="Australia/Melbourne" data-i18n="melbourne">墨爾本 (GMT+10)</option>
+                        <option value="Pacific/Auckland" data-i18n="auckland">奧克蘭 (GMT+12)</option>
                     </optgroup>
                 </select>
             </div>
-            <button onclick="convertTime()">轉換</button>
+            <button onclick="convertTime()" data-i18n="convert">轉換</button>
             <div class="results" id="results">
                 <!-- 結果將在這裡顯示 -->
             </div>

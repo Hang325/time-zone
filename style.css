@@ -191,6 +191,42 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
+.marker-container {
+    width: 30px;
+    height: 40px;
+    position: relative;
+    transform: translateY(-20px);  /* 調整標記位置 */
+}
+
+.marker-pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: #3b82f6;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.marker-pin::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin: 5px 0 0 5px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.marker-container:hover .marker-pin {
+    transform: rotate(-45deg) scale(1.1);
+    background: #2563eb;
+}
+
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6);
@@ -260,6 +296,64 @@ button:hover {
 .leaflet-control-zoom a:hover {
     background: #f0f9ff !important;
     color: #3b82f6 !important;
+}
+
+.language-selector {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+#languageSelect {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 6px;
+    background: white url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") no-repeat right 0.5rem center;
+    background-size: 1.2rem;
+    appearance: none;
+    font-size: 0.95rem;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#languageSelect:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    background-color: #f0f9ff;
+}
+
+#languageSelect:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+#languageSelect option {
+    padding: 0.5rem;
+    background: white;
+    color: #1e293b;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: white;
+    color: #1e293b;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover {
+    background: #f0f9ff;
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.lang-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
 }
 
 @media (max-width: 480px) {
