@@ -9,21 +9,69 @@ body {
     line-height: 1.6;
     background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
     color: #1e293b;
 }
 
-.container {
-    width: 95%;
-    max-width: 1200px;
-    background: rgba(255, 255, 255, 0.95);
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 左側地圖區域 */
+.map-section {
+    flex: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* 右側內容區域 */
+.content-section {
+    flex: 1;
+    margin-left: 50%;
     padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* 語言選擇器 */
+.language-selector {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+#languageSelect {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 6px;
+    background: white url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") no-repeat right 0.5rem center;
+    background-size: 1.2rem;
+    appearance: none;
+    font-size: 0.95rem;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#languageSelect:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    background-color: #f0f9ff;
+}
+
+#languageSelect:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
 h1 {
@@ -32,15 +80,6 @@ h1 {
     margin-bottom: 2rem;
     font-size: 2.5rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#map {
-    width: 100%;
-    height: 400px;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    border: 2px solid rgba(59, 130, 246, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .converter {
@@ -165,37 +204,16 @@ button:hover {
     transform: translateY(-50%) scale(1.2);
 }
 
+/* 地圖相關樣式 */
 .custom-marker {
     background: transparent;
-}
-
-.marker-pulse {
-    width: 20px;
-    height: 20px;
-    background: rgba(59, 130, 246, 0.6);
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-    animation: pulse 1.5s infinite;
-}
-
-.marker-pulse::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #3b82f6;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .marker-container {
     width: 30px;
     height: 40px;
     position: relative;
-    transform: translateY(-20px);  /* 調整標記位置 */
+    transform: translateY(-20px);
 }
 
 .marker-pin {
@@ -225,18 +243,6 @@ button:hover {
 .marker-container:hover .marker-pin {
     transform: rotate(-45deg) scale(1.1);
     background: #2563eb;
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-    }
 }
 
 .custom-popup {
@@ -298,74 +304,20 @@ button:hover {
     color: #3b82f6 !important;
 }
 
-.language-selector {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1.5rem;
-}
-
-#languageSelect {
-    padding: 0.5rem 2.5rem 0.5rem 1rem;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 6px;
-    background: white url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") no-repeat right 0.5rem center;
-    background-size: 1.2rem;
-    appearance: none;
-    font-size: 0.95rem;
-    color: #1e293b;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#languageSelect:hover {
-    border-color: rgba(59, 130, 246, 0.4);
-    background-color: #f0f9ff;
-}
-
-#languageSelect:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-#languageSelect option {
-    padding: 0.5rem;
-    background: white;
-    color: #1e293b;
-}
-
-.lang-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    background: white;
-    color: #1e293b;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.lang-btn:hover {
-    background: #f0f9ff;
-    border-color: rgba(59, 130, 246, 0.4);
-}
-
-.lang-btn.active {
-    background: #3b82f6;
-    color: white;
-    border-color: #3b82f6;
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 1rem;
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
     }
-    
-    h1 {
-        font-size: 1.8rem;
+
+    .map-section {
+        position: relative;
+        width: 100%;
+        height: 400px;
     }
-    
-    #map {
-        height: 300px;
+
+    .content-section {
+        margin-left: 0;
+        width: 100%;
     }
 }
