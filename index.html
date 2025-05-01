@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時區轉換器</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>時區轉換器</h1>
+        <div id="map"></div>
+        <div class="converter">
+            <div class="input-group">
+                <label for="sourceTime">輸入時間：</label>
+                <input type="datetime-local" id="sourceTime">
+                <select id="sourceZone">
+                    <optgroup label="亞洲">
+                        <option value="Asia/Taipei">臺北 (GMT+8)</option>
+                        <option value="Asia/Tokyo">東京 (GMT+9)</option>
+                        <option value="Asia/Seoul">首爾 (GMT+9)</option>
+                        <option value="Asia/Shanghai">上海 (GMT+8)</option>
+                        <option value="Asia/Hong_Kong">香港 (GMT+8)</option>
+                        <option value="Asia/Singapore">新加坡 (GMT+8)</option>
+                        <option value="Asia/Bangkok">曼谷 (GMT+7)</option>
+                        <option value="Asia/Dubai">杜拜 (GMT+4)</option>
+                    </optgroup>
+                    <optgroup label="歐洲">
+                        <option value="Europe/London">倫敦 (GMT+1)</option>
+                        <option value="Europe/Paris">巴黎 (GMT+2)</option>
+                        <option value="Europe/Berlin">柏林 (GMT+2)</option>
+                        <option value="Europe/Rome">羅馬 (GMT+2)</option>
+                        <option value="Europe/Moscow">莫斯科 (GMT+3)</option>
+                    </optgroup>
+                    <optgroup label="美洲">
+                        <option value="America/New_York">紐約 (GMT-4)</option>
+                        <option value="America/Los_Angeles">洛杉磯 (GMT-7)</option>
+                        <option value="America/Chicago">芝加哥 (GMT-5)</option>
+                        <option value="America/Vancouver">溫哥華 (GMT-7)</option>
+                        <option value="America/Toronto">多倫多 (GMT-4)</option>
+                    </optgroup>
+                    <optgroup label="大洋洲">
+                        <option value="Australia/Sydney">雪梨 (GMT+10)</option>
+                        <option value="Australia/Melbourne">墨爾本 (GMT+10)</option>
+                        <option value="Pacific/Auckland">奧克蘭 (GMT+12)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <button onclick="convertTime()">轉換</button>
+            <div class="results" id="results">
+                <!-- 結果將在這裡顯示 -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
